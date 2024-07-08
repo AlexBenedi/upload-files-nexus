@@ -13,6 +13,7 @@ password=$3
 repository=$4
 file=$5
 
+function upload_raw {}
 
 echo "Subiendo archivo $file a $server_url"
 
