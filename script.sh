@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ $# -lt 4 ]
+if [ $# -lt 5 ]
 then
-    echo "Argumenos de entrada"
+    echo "Se requieren 5 argumentos de entrada"
     echo "<server-url> <username> <password> <repository> <file>"
     exit 1
 fi
@@ -15,15 +15,17 @@ file=$5
 
 # Funcion para subir archivo de tipo docker
 function upload_docker {
-
+    echo "Subiendo archivo de tipo Docker..."
 }
 
+# Función para subir archivo de tipo npm
 function upload_npm {
-
+    echo "Subiendo archivo de tipo npm..."
 }
 
-function upload_raw{
-
+# Función para subir archivo de tipo raw
+function upload_raw {
+    echo "Subiendo archivo de tipo raw..."
 }
 
 echo "Subiendo archivo $file a $server_url"
