@@ -35,6 +35,6 @@ runs:
           echo "El fichero no se ha subido correctamente"
           exit 1
         fi
-      if: ${{ inputs.format == "raw" }}
+      if: ${{ inputs.format == 'raw' }}
       shell: bash
 
