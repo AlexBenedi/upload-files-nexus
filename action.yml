@@ -20,6 +20,6 @@ jobs:
   upload-raw:
     steps:
     - name: upload
-      run: curl -v -u "${{ abenedia }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
+      run: curl -v -u "${{ server-url }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
   
   
