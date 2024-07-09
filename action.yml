@@ -27,7 +27,7 @@ runs:
     - name: repo-default
       run: |
         curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }};
-        status=$(curl -v -u "${{ inputs.username }}:${{ inputs.password }}" -o /dev/null -s -w "%{http_code}" "${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }});
+        status=$(curl -v -u "${{ inputs.username }}:${{ inputs.password }}" -o /dev/null -s -w "%{http_code}" ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }});
         if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]
         then
           echo "El fichero se ha subido correctamente"
