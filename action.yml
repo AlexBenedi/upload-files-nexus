@@ -16,7 +16,7 @@ inputs:
     file:
       description: "Nombre del archivo a subir"
       required: true 
-jobs:
+runs:
   upload-raw:
     steps:
     - name: upload
