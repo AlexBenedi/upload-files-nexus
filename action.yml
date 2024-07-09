@@ -19,9 +19,26 @@ inputs:
     format:
       description: "Tipo de repositorio al que se va a subir el artefacto"
       requiered: true
+
 runs:
   using: 'composite'
   steps:
-    - run: curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
+    - name: reponpm
+      run: |
+        curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
+      if: inputs.repository == "raw-test" 
       shell: bash
-  
+
+    - name: repo-default
+      run: |
+        curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }} 
+        status=$(curl -v --u "${{ inputs.username }}:${{ inputs.password }}" -o /dev/null -s -w "%{http_code}" "${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }})
+        if [ "$status" -ne 2??]
+        then
+          echo "El fichero no se ha podido subir"
+          exit 1
+        fi
+        echo "El fichero se ha subido correctamente"
+      if: inputs.format = "raw"
+      shell: bash
+
