@@ -23,11 +23,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: reponpm
-      run: |
-        curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
-      if: inputs.repository == "raw-test" 
-      shell: bash
 
     - name: repo-default
       run: |
