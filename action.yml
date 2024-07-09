@@ -16,14 +16,11 @@ inputs:
       required: true
     file:
       description: "Nombre del archivo a subir"
-      required: true
-runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.server-url }}
-    - ${{ inputs.username }}
-    - ${{ inputs.password }}
-    - ${{ inputs.repository }}
-    - ${{ inputs.file }}
+      required: true 
+jobs:
+  upload-raw:
+    steps:
+    - name: upload
+      run: curl -v --user '${{ secrets.USER_NEXUS }}:${{ secrets.NEXUS_PASS }}' --upload-file archivo.txt https://nexus.prisamedia.com/repository/raw-test/archivo.txt
+  
   
