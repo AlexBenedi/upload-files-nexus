@@ -15,6 +15,7 @@ file=$5
 
 function upload_raw {
     echo "Subiendo archivo $file a $server_url"
+    curl -v --user "$username:$password" --upload-file $file "https://nexus.prisamedia.com/repository/raw-test/$file"
 }
 
 upload_raw
