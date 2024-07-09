@@ -17,9 +17,8 @@ inputs:
       description: "Nombre del archivo a subir"
       required: true 
 runs:
-  upload-raw:
-    steps:
-    - name: upload
-      run: curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
-  
+  using: 'composite'
+  steps:
+    - run: curl -v -u "${{ inputs.username }}:${{ inputs.password }}" --upload-file ${{ inputs.file }} ${{ inputs.server-url }}/repository/${{ inputs.repository }}/${{ inputs.file }}
+      shell: bash
   
