@@ -16,6 +16,9 @@ inputs:
     file:
       description: "Nombre del archivo a subir"
       required: true 
+    format:
+      description: "Tipo de repositorio al que se va a subir el artefacto"
+      requiered: true
 runs:
   using: 'composite'
   steps:
