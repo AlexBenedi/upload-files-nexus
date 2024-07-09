@@ -1,5 +1,4 @@
 name: "Subir archivos a nube de nexus"
-author: "Javier"
 description: "Subir archivos a nube de nexus"
 inputs:
     server-url:
